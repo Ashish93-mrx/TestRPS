@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ashish</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <h1>ROCK PAPPER SCISSOR</h1>
+    
+         <!-- 
+            height: 50vh;
+    grid-column: auto;<div style="margin-left: 40px;"> <button onclick="
+             let computermove='';
+             game('rock');
+         ">Rock</button>
+            
+        // <button onclick="
+        //     game('Paper'); 
+        /Paper</button>
+        </div> -->
+<div class="body">
+<p>Click on the image you choose</p>
+<div class="space">
+
+<img class="test" src="rock.png" height="50px" width="50px" alt="test" onclick="game('rock')" />
+
+<img class="test" src="paper.png" height="50px" width="50px" alt="test" onclick="game('Paper')" />
+
+<img class="test" src="scissor.png" height="50px" width="50px" alt="test" onclick="game('scissor')" />
+</div>
+
+
+<h2>Your score:</h2>
+<p id="output"></p>
+
+<h2>Opponents score:</h2>
+<p id="opponent"></p>
+</div>
+
+    <script>
+let user=0;
+let opp=0;
+
+function game(name)
+{
+    randomNumber = Math.random();
+
+if(randomNumber <= 0.3) {
+    computermove='rock';
+}
+else if(randomNumber <=0.6 && randomNumber >0.3)
+{
+     computermove='Paper';
+}
+else{
+     computermove='scissor';
+}
+result='';
+
+
+if((computermove=='rock' && name =='Paper') || (computermove=='Paper' && name =='scissor') || (computermove=='scissor' && name =='rock')){ result='you win';
+ user++;
+}
+
+else if(computermove===name){
+
+    result='it was Tie';
+}
+else{
+    result='you lost';
+    opp++;
+}
+
+
+
+if(user==3)
+{
+    user=0;
+    opp=0;
+    document.getElementById("output").innerHTML = 0;
+    document.getElementById("opponent").innerHTML = 0;
+    alert("Alright,you Won");
+    return;
+}
+
+if(opp==3)
+{
+    document.getElementById("opponent").innerHTML = 0;
+    document.getElementById("output").innerHTML = 0;
+    user=0;
+    opp=0;
+    alert("HAHAA,I Won");
+    return;
+}
+
+
+document.getElementById("output").innerHTML = user;
+document.getElementById("opponent").innerHTML = opp;
+
+if(user<3 || opp<3){
+alert(`You picked ${name}, Ashish picked ${computermove} and ${result}`);
+}
+
+
+}
+
+</script>
+</body>
+</html>
